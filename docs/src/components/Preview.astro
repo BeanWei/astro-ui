@@ -1,0 +1,16 @@
+---
+import { TabItem, Tabs } from '@astrojs/starlight/components'
+
+// https://github.com/withastro/roadmap/discussions/827
+---
+
+<Tabs>
+  <TabItem label="Preview">
+    <div class="not-content ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 relative rounded-md border p-10 flex flex-wrap gap-4">
+      <slot name="preview" />
+    </div>
+  </TabItem>
+  <TabItem label="Code">
+    <slot />
+  </TabItem>
+</Tabs>

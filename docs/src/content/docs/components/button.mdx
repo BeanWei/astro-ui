@@ -1,0 +1,108 @@
+---
+title: Button
+description: button
+---
+
+import Preview from '~/components/Preview.astro'
+import { Button } from '@beanwei/astro-ui'
+import { Icon } from 'astro-icon/components'
+
+## Import
+
+```tsx
+import { Button } from '@beanwei/astro-ui'
+```
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <Button>Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="destructive">Destructive</Button>
+    <Button variant="outline">Outline</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="link">Link</Button>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button } from '@beanwei/astro-ui'
+  ---
+
+  <Button>Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="destructive">Destructive</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="link">Link</Button>
+  ```
+</Preview>
+
+
+### Icon
+
+<Preview>
+  <Fragment slot="preview">
+    <Button variant="outline" size="icon">
+      <Icon name="lucide:chevron-right" />
+    </Button>
+    <Button>
+      <Icon name="lucide:mail-open" />
+      Login with Email
+    </Button>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button } from '@beanwei/astro-ui'
+  import { Icon } from 'astro-icon/components'
+  ---
+
+  <Button variant="outline" size="icon">
+    <Icon name="lucide:chevron-right" />
+  </Button>
+  <Button>
+    <Icon name="lucide:mail-open" />
+    Login with Email
+  </Button>
+  ```
+</Preview>
+
+
+### Loading
+
+<Preview>
+  <Fragment slot="preview">
+    <Button data-state="loading" disabled>
+      Please wait
+    </Button>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button } from '@beanwei/astro-ui'
+  ---
+
+  <Button data-state="loading" disabled>
+    Please wait
+  </Button>
+  ```
+</Preview>
+
+
+### As Child
+
+<Preview>
+  <Fragment slot="preview">
+    <Button asChild>
+      <a href="/">Home</a>
+    </Button>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button } from '@beanwei/astro-ui'
+  ---
+
+  <Button asChild>
+    <a href="/">Home</a>
+  </Button>
+  ```
+</Preview>

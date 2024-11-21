@@ -1,0 +1,45 @@
+{
+  "name": "@beanwei/astro-ui",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@9.14.2",
+  "description": "Build Fast, Beautiful Websites with AstroUI",
+  "author": "Bean Wei <beanwei@126.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/beanwei/astro-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beanwei/astro-ui.git"
+  },
+  "bugs": "https://github.com/beanwei/astro-ui/issues",
+  "keywords": [
+    "withastro",
+    "astro-integration",
+    "shadcn",
+    "astro"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./tailwind": "./src/tailwind.ts"
+  },
+  "files": [
+    "src/"
+  ],
+  "scripts": {
+    "taze": "npx taze -r -w"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.6.12",
+    "dom-serializer": "^2.0.0",
+    "htmlparser2": "^9.1.0",
+    "tailwind-variants": "^0.3.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.9.1",
+    "astro": "^4.16.13",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.6.3",
+    "vite-plugin-simple-scope": "^2.0.2"
+  }
+}

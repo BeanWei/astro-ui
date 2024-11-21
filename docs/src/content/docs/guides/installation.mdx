@@ -1,0 +1,36 @@
+---
+title: Installation
+description: Setting up AstroUI in a Astro project
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+
+1. Install AstroUI
+
+   ```bash
+   npm install @beanwei/astro-ui
+   # or
+   pnpm add @beanwei/astro-ui
+   # or
+   yarn add @beanwei/astro-ui
+   ```
+
+2. Configure the tailwind
+
+   ```js title="src/tailwind.config.mjs"
+    import astroui from '@beanwei/astro-ui/tailwind'
+    import animate from 'tailwindcss-animate'
+
+    /** @type {import('tailwindcss').Config} */
+    export default {
+      content: [
+        './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
+        './node_modules/@beanwei/astro-ui/src/**/*.{astro,ts}',
+      ],
+      plugins: [animate, astroui],
+    }
+   ```
+
+</Steps>

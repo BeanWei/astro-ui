@@ -1,0 +1,37 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types'
+import render from 'dom-serializer'
+import { DomUtils, parseDocument } from 'htmlparser2'
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+	as: Tag
+	asChild?: boolean
+}>
+
+const { as: Tag = 'div', asChild = false, ...restProps } = Astro.props
+
+let childHtml = ''
+if (asChild) {
+	childHtml = await Astro.slots.render('default')
+	if (Object.keys(restProps).length > 0) {
+		const childDoc = parseDocument(childHtml.trim())
+		const firstChild = DomUtils.findOne((node) => node.type === 'tag', childDoc.children)
+		if (firstChild) {
+			for (const [k, v] of Object.entries(restProps)) {
+				if (v) {
+					firstChild.attribs[k] = v as any
+				}
+			}
+			childHtml = render(childDoc)
+		}
+	}
+}
+---
+
+{asChild ? (
+  <Fragment set:html={childHtml} />
+) : (
+  <Tag {...restProps}>
+    <slot />
+  </Tag>
+)}
