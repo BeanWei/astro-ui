@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {
+	value?: string
+}
+
+const { class: className, value, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class:list={['collapse border-b', className]}
+  data-value={value}
+  data-part="accordion-item"
+>
+	<slot />
+</div>

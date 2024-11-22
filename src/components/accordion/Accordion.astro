@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import render from 'dom-serializer'
+import { DomUtils, parseDocument } from 'htmlparser2'
+import uniqId from '../../utils/uniqId'
+
+interface Props extends HTMLAttributes<'div'> {
+	multiple?: boolean
+}
+
+const { multiple, class: className, ...restProps } = Astro.props
+
+let childHtml = ''
+if (!multiple) {
+	childHtml = await Astro.slots.render('default')
+	const childDoc = parseDocument(childHtml.trim())
+	const itemName = uniqId('accordion_')
+	for (const n of DomUtils.findAll((node) => node.tagName === 'input', childDoc.children)) {
+		n.attribs.name = itemName
+	}
+	childHtml = render(childDoc)
+}
+---
+
+<div
+  {...restProps}
+  class={className}
+  data-part="accordion-root"
+>
+  {multiple ? <slot /> : <Fragment set:html={childHtml} />}
+</div>

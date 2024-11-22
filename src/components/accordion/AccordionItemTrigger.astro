@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'button'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<input type="radio" class="peer cursor-pointer checked:cursor-auto" />
+<button
+  {...restProps}
+  class:list={['collapse-title peer-checked:[&>svg]:rotate-180 flex flex-1 items-center justify-between py-4 text-sm font-medium', className]}
+  data-part="accordion-item-trigger"
+  type="button"
+>
+  <slot />
+  <slot name="indicator">
+    <svg data-part="accordion-item-indicator" aria-hidden class="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </slot>
+</button>

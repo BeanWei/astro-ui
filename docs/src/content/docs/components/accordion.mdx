@@ -1,0 +1,79 @@
+---
+title: Accordion
+description: accordion
+---
+
+import Preview from '~/components/Preview.astro'
+import { Accordion } from '@beanwei/astro-ui'
+
+## Import
+
+```tsx
+import { Accordion } from '@beanwei/astro-ui'
+```
+
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <Accordion.Root class="w-full">
+      <Accordion.Item value="1">
+        <Accordion.ItemTrigger>
+          Item 1
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent>
+          Item 1 content
+        </Accordion.ItemContent>
+      </Accordion.Item>
+      <Accordion.Item value="2">
+        <Accordion.ItemTrigger>
+          Item 2
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent>
+          Item 2 content
+        </Accordion.ItemContent>
+      </Accordion.Item>
+      <Accordion.Item value="3">
+        <Accordion.ItemTrigger>
+          Item 3
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent>
+          Item 3 content
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    </Accordion.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Accordion } from '@beanwei/astro-ui'
+  ---
+
+  <Accordion.Root>
+    <Accordion.Item value="1">
+      <Accordion.ItemTrigger>
+        Item 1
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        Item 1 content
+      </Accordion.ItemContent>
+    </Accordion.Item>
+    <Accordion.Item value="2">
+      <Accordion.ItemTrigger>
+        Item 2
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        Item 2 content
+      </Accordion.ItemContent>
+    </Accordion.Item>
+    <Accordion.Item value="3">
+      <Accordion.ItemTrigger>
+        Item 3
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        Item 3 content
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  </Accordion.Root>
+  ```
+</Preview>

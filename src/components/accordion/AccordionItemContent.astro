@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class="collapse-content overflow-hidden text-sm"
+  data-part="accordion-item-content"
+  role="region"
+>
+  <div class:list={['pb-4 pt-0', className]}>
+    <slot />
+  </div>
+</div>

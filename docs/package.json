@@ -17,7 +17,6 @@
     "astro-icon": "^1.1.2",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.15",
-    "tailwindcss-animate": "^1.0.7",
     "tailwindcss-scoped-preflight": "^3.4.9",
     "vite-plugin-simple-scope": "^2.0.2"
   }
