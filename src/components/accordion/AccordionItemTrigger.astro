@@ -9,7 +9,7 @@ const { class: className, ...restProps } = Astro.props
 <input type="radio" class="peer cursor-pointer checked:cursor-auto" />
 <button
   {...restProps}
-  class:list={['collapse-title peer-checked:[&>svg]:rotate-180 flex flex-1 items-center justify-between py-4 text-sm font-medium', className]}
+  class:list={['du-collapse-title peer-checked:[&>svg]:rotate-180 flex flex-1 items-center justify-between py-4 text-sm font-medium', className]}
   data-part="accordion-item-trigger"
   type="button"
 >

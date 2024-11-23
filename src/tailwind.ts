@@ -157,7 +157,9 @@ export default function (): PresetsConfig {
 		],
 		daisyui: {
 			styled: false,
+			base: false,
 			logs: false,
+			prefix: 'du-',
 		},
 	}
 }
