@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class:list={['flex items-center p-6 pt-0', className]}
+>
+  <slot />
+</div>

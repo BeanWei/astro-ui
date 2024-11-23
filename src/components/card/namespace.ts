@@ -1,0 +1,6 @@
+export { default as Root } from './Card.astro'
+export { default as Header } from './CardHeader.astro'
+export { default as Title } from './CardTitle.astro'
+export { default as Description } from './CardDescription.astro'
+export { default as Body } from './CardBody.astro'
+export { default as Footer } from './CardFooter.astro'
