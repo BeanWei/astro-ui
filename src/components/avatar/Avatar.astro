@@ -1,0 +1,17 @@
+---
+import type { ComponentProps } from 'astro/types'
+import { type AvatarVariantProps, avatar } from '../../variants/avatar'
+import Primitive from '../primitive/Primitive.astro'
+
+interface Props extends ComponentProps<typeof Primitive>, AvatarVariantProps {}
+
+const { size, shape, variant, class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class={avatar({ size, shape, className, variant })}
+  data-part="avatar-root"
+>
+	<slot />
+</div>

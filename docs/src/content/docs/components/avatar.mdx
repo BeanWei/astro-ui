@@ -1,0 +1,172 @@
+---
+title: Avatar
+description: avatar
+---
+
+import Preview from '~/components/Preview.astro'
+import { Avatar } from '@beanwei/astro-ui'
+import { Icon } from 'astro-icon/components'
+
+## Import
+
+```tsx
+import { Avatar } from '@beanwei/astro-ui'
+```
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <Avatar.Root shape="circle">
+      <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+    </Avatar.Root>
+    <Avatar.Root shape="square">
+      <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+    </Avatar.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button } from '@beanwei/astro-ui'
+  ---
+
+  <Avatar.Root shape="circle">
+    <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+  </Avatar.Root>
+  <Avatar.Root shape="square">
+    <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+  </Avatar.Root>
+  ```
+</Preview>
+
+
+### Sizes
+
+<Preview>
+  <Fragment slot="preview">
+    <Avatar.Root size="sm">
+      <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+    </Avatar.Root>
+    <Avatar.Root size="md">
+      <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+    </Avatar.Root>
+    <Avatar.Root size="lg">
+      <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+    </Avatar.Root>
+    <Avatar.Root class="w-20 h-20 text-lg">
+      <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+    </Avatar.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button } from '@beanwei/astro-ui'
+  ---
+
+  <Avatar.Root size="sm">
+    <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+  </Avatar.Root>
+  <Avatar.Root size="base">
+    <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+  </Avatar.Root>
+  <Avatar.Root size="lg">
+    <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+  </Avatar.Root>
+  <Avatar.Root class="w-20 h-20 text-lg">
+    <Avatar.Image src="https://github.com/github.png" name="Github">GH</Avatar.Image>
+  </Avatar.Root>
+  ```
+</Preview>
+
+
+### Fallback
+
+<Preview>
+  <Fragment slot="preview">
+    <Avatar.Root>
+      <Avatar.Image src="https://github.com/_github_.png" name="Github">GH</Avatar.Image>
+    </Avatar.Root>
+    <Avatar.Root>
+      <Avatar.Image src="https://github.com/_github_.png" name="Github">
+        <Icon name="lucide:user" />
+      </Avatar.Image>
+    </Avatar.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button } from '@beanwei/astro-ui'
+  import { Icon } from 'astro-icon/components'
+  ---
+
+  <Avatar.Root>
+    <Avatar.Image src="https://github.com/_github_.png" name="Github">GH</Avatar.Image>
+  </Avatar.Root>
+  <Avatar.Root>
+    <Avatar.Image src="https://github.com/_github_.png" name="Github">
+      <Icon name="lucide:user" />
+    </Avatar.Image>
+  </Avatar.Root>
+  ```
+</Preview>
+
+
+
+### Without Image
+
+<Preview>
+  <Fragment slot="preview">
+    <Avatar.Root>
+      <Avatar.Image name="Github">GH</Avatar.Image>
+    </Avatar.Root>
+    <Avatar.Root>
+      <Avatar.Image name="Github">
+        <Icon name="lucide:user" />
+      </Avatar.Image>
+    </Avatar.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button } from '@beanwei/astro-ui'
+  import { Icon } from 'astro-icon/components'
+  ---
+
+  <Avatar.Root>
+    <Avatar.Image name="Github">GH</Avatar.Image>
+  </Avatar.Root>
+  <Avatar.Root>
+    <Avatar.Image name="Github">
+      <Icon name="lucide:user" />
+    </Avatar.Image>
+  </Avatar.Root>
+  ```
+</Preview>
+
+
+### Variants
+
+<Preview>
+  <Fragment slot="preview">
+    <Avatar.Root variant="subtle">
+      <Avatar.Image name="BeanWei">BW</Avatar.Image>
+    </Avatar.Root>
+    <Avatar.Root variant="solid">
+      <Avatar.Image name="BeanWei">BW</Avatar.Image>
+    </Avatar.Root>
+    <Avatar.Root variant="outline">
+      <Avatar.Image name="BeanWei">BW</Avatar.Image>
+    </Avatar.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button } from '@beanwei/astro-ui'
+  ---
+
+  <Avatar.Root variant="subtle">
+    <Avatar.Image name="BeanWei">BW</Avatar.Image>
+  </Avatar.Root>
+  <Avatar.Root variant="solid">
+    <Avatar.Image name="BeanWei">BW</Avatar.Image>
+  </Avatar.Root>
+  <Avatar.Root variant="outline">
+    <Avatar.Image name="BeanWei">BW</Avatar.Image>
+  </Avatar.Root>
+  ```
+</Preview>

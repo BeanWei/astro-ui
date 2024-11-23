@@ -1,0 +1,37 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'img'>, HTMLAttributes<'span'> {
+	src?: string
+	name?: string
+}
+
+const { src, name, class: className, ...restProps } = Astro.props
+const fallback = src && Astro.slots.has('default') ? await Astro.slots.render('default') : null
+---
+
+{src ? (
+  <object
+    {...restProps}
+    class:list={['inline-flex items-center justify-center overflow-hidden align-middle object-center w-full h-full', className]}
+    data={src}
+    type="image/gif"
+    aria-label={name}
+    data-part="avatar-image"
+  >
+    {fallback && (
+      <div class="flex items-center justify-center w-full h-full text-inherit">
+        <Fragment set:html={fallback} />
+      </div>
+    )}
+  </object>
+) : (
+  <span
+    {...restProps}
+    class:list={['text-inherit', className]}
+    aria-label={name}
+    data-part="avatar-image"
+  >
+    <slot />
+  </span>
+)}
