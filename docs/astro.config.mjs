@@ -1,8 +1,8 @@
 import starlight from '@astrojs/starlight'
 import tailwind from '@astrojs/tailwind'
-import { defineConfig } from 'astro/config'
-
 import icon from 'astro-icon'
+import { defineConfig } from 'astro/config'
+import simpleScope from 'vite-plugin-simple-scope'
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,4 +34,7 @@ export default defineConfig({
 			},
 		}),
 	],
+	vite: {
+		plugins: [simpleScope()],
+	},
 })

@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { button } from '../../variants/button.ts'
+
+interface Props extends HTMLAttributes<'button'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<button
+  {...restProps}
+  class:list={[button({ size: 'icon', className: 'h-1 w-4 rounded-full bg-primary/50 transition-all data-[active="true"]:bg-primary data-[active="true"]:w-6' }), className]}
+  data-part="carousel-indicator"
+  type="button"
+>
+  <slot />
+</button>

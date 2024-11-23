@@ -1,0 +1,7 @@
+export { default as Root } from './Carousel.astro'
+export { default as Content } from './CarouselContent.astro'
+export { default as Item } from './CarouselItem.astro'
+export { default as PrevTrigger } from './CarouselPrevTrigger.astro'
+export { default as NextTrigger } from './CarouselNextTrigger.astro'
+export { default as IndicatorGroup } from './CarouselIndicatorGroup.astro'
+export { default as Indicator } from './CarouselIndicator.astro'

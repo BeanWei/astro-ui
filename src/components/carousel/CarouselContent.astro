@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'ul'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<ul
+  {...restProps}
+  class:list={["flex", className]}
+  data-part="carousel-content"
+  style="transition-property: transform; transform: translate3d(0px, 0px, 0px); transition-duration: 500ms;"
+>
+  <slot />
+</ul>

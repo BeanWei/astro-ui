@@ -1,0 +1,66 @@
+---
+title: Carousel
+description: carousel
+---
+
+import Preview from '~/components/Preview.astro'
+import { Carousel } from '@beanwei/astro-ui'
+
+## Import
+
+```tsx
+import { Carousel } from '@beanwei/astro-ui'
+```
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <Carousel.Root>
+      <Carousel.Content>
+        <Carousel.Item>
+          <img src="https://tinyurl.com/6jurv23t" alt="Image 1" class="w-full h-64 object-cover rounded-lg" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src="https://tinyurl.com/7rmccdn5" alt="Image 1" class="w-full h-64 object-cover rounded-lg" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src="https://tinyurl.com/59jxz9uu" alt="Image 1" class="w-full h-64 object-cover rounded-lg" />
+        </Carousel.Item>
+      </Carousel.Content>
+      <Carousel.PrevTrigger />
+      <Carousel.NextTrigger />
+      <Carousel.IndicatorGroup>
+        <Carousel.Indicator />
+        <Carousel.Indicator />
+        <Carousel.Indicator />
+      </Carousel.IndicatorGroup>
+    </Carousel.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button, Card } from '@beanwei/astro-ui'
+  ---
+
+  <Carousel.Root>
+    <Carousel.Content>
+      <Carousel.Item>
+        <img src="https://tinyurl.com/6jurv23t" alt="Image 1" class="w-full h-64 object-cover rounded-lg" />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src="https://tinyurl.com/7rmccdn5" alt="Image 1" class="w-full h-64 object-cover rounded-lg" />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src="https://tinyurl.com/59jxz9uu" alt="Image 1" class="w-full h-64 object-cover rounded-lg" />
+      </Carousel.Item>
+    </Carousel.Content>
+    <Carousel.PrevTrigger />
+    <Carousel.NextTrigger />
+    <Carousel.IndicatorGroup>
+      <Carousel.Indicator />
+      <Carousel.Indicator />
+      <Carousel.Indicator />
+    </Carousel.IndicatorGroup>
+  </Carousel.Root>
+  ```
+</Preview>

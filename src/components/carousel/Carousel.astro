@@ -1,0 +1,91 @@
+---
+import { scope } from 'simple:scope'
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {
+	autoplay?: boolean
+}
+
+const { autoplay, class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class:list={['overflow-hidden relative w-full', className]}
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="Carousel"
+  data-part="carousel-root"
+  data-ctx-autoplay={String(autoplay)}
+  data-scopeid={scope()}
+>
+  <slot />
+</div>
+
+<script>
+  import { scope } from 'simple:scope'
+
+  document.querySelectorAll<HTMLElement>(`[data-scopeid="${scope()}"]`).forEach(root => {
+    const contentEl = root.querySelector<HTMLElement>('[data-part=carousel-content]')!
+    const itemEls = root.querySelectorAll<HTMLElement>('[data-part=carousel-item]')
+    const itemsCount = itemEls.length
+    const prevEl = root.querySelector<HTMLButtonElement>('[data-part=carousel-prev-trigger]')!
+    const nextEl = root.querySelector<HTMLButtonElement>('[data-part=carousel-next-trigger]')!
+    const indicatorEls = root.querySelectorAll<HTMLButtonElement>('[data-part=carousel-indicator]')
+
+    let curIdx = 0
+    indicatorEls[0]?.setAttribute('data-active', 'true')
+
+    function updateCarousel() {
+      const offset = -curIdx * root.offsetWidth;
+      contentEl.style.transform = `translate3d(${offset}px, 0, 0)`;
+
+      indicatorEls.forEach((indicator, index) => {
+        indicator.setAttribute('data-active', String(index === curIdx))
+      });
+    }
+
+    prevEl.addEventListener('click', () => {
+      curIdx = (curIdx > 0) ? curIdx - 1 : itemsCount - 1;
+      updateCarousel();
+    });
+
+    nextEl.addEventListener('click', () => {
+      curIdx = (curIdx < itemsCount - 1) ? curIdx + 1 : 0;
+      updateCarousel();
+    });
+
+    indicatorEls.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        curIdx = index;
+        updateCarousel();
+      });
+    });
+
+    // handle window resize to recalculate the width
+    window.addEventListener('resize', updateCarousel)
+
+    if (root.getAttribute('data-ctx-autoplay') === 'true') {
+      let autoplayInterval: number
+      const autoplayDelay = 3000
+
+      function nextSlide() {
+        curIdx = (curIdx < itemsCount - 1) ? curIdx + 1 : 0;
+        updateCarousel()
+      }
+
+      function startAutoplay() {
+        autoplayInterval = setInterval(nextSlide, autoplayDelay) as unknown as number
+      }
+
+      function stopAutoplay() {
+        clearInterval(autoplayInterval)
+      }
+
+      contentEl.addEventListener('mouseenter', stopAutoplay)
+      contentEl.addEventListener('mouseleave', startAutoplay)
+
+      startAutoplay()
+    }
+  })
+</script>
