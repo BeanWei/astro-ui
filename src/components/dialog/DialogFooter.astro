@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class:list={['flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-x-2', className]}
+  data-part="dialog-footer"
+>
+  <slot />
+</div>

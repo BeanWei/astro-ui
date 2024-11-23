@@ -1,0 +1,20 @@
+---
+import type { ComponentProps } from 'astro/types'
+import Primitive from '../primitive/Primitive.astro'
+
+interface Props extends ComponentProps<typeof Primitive> {}
+
+const { as, asChild, class: className, ...restProps } = Astro.props
+---
+
+<form method="dialog">
+  <Primitive
+    {...restProps}
+    as={as}
+    asChild={asChild}
+    class={className}
+    data-part="dialog-close-trigger"
+  >
+    <slot />
+  </Primitive>
+</form>

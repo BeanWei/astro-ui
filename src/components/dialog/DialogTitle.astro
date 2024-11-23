@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'h2'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<h2
+  {...restProps}
+  class:list={['text-lg font-semibold leading-none tracking-tight', className]}
+  data-part="dialog-title"
+>
+  <slot />
+</h2>

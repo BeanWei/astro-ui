@@ -30,7 +30,7 @@ export default defineConfig({
 		tailwind({ applyBaseStyles: false }),
 		icon({
 			include: {
-				lucide: ['chevron-right', 'mail-open', 'user', 'circle-alert', 'circle-check'],
+				lucide: ['chevron-right', 'mail-open', 'user', 'circle-alert', 'circle-check', 'x'],
 			},
 		}),
 	],

@@ -1,0 +1,31 @@
+---
+import { scope } from 'simple:scope'
+import type { HTMLAttributes } from 'astro/types'
+import render from 'dom-serializer'
+import { DomUtils, parseDocument } from 'htmlparser2'
+import uniqId from '../../utils/uniqId'
+
+interface Props extends HTMLAttributes<'div'> {}
+
+const props = Astro.props
+
+let childHtml = await Astro.slots.render('default')
+const childDoc = parseDocument(childHtml.trim())
+const dialogId = uniqId(`${scope()}_`)
+for (const n of DomUtils.findAll((node) => node.type === 'tag', childDoc.children)) {
+	const partName = n.attribs['data-part']
+	if (partName === 'dialog-trigger') {
+		n.attribs.onclick = `${dialogId}.showModal()`
+	} else if (partName === 'dialog-content') {
+		n.attribs.id = dialogId
+	}
+}
+childHtml = render(childDoc)
+---
+
+<div
+  {...props}
+  data-part="dialog-root"
+>
+  <Fragment set:html={childHtml} />
+</div>

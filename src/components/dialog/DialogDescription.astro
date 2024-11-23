@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'p'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<p
+  {...restProps}
+  class:list={['text-sm text-muted-foreground', className]}
+  data-part="dialog-description"
+>
+  <slot />
+</p>

@@ -1,0 +1,63 @@
+---
+title: Dialog
+description: dialog
+---
+
+import Preview from '~/components/Preview.astro'
+import { Button, Dialog } from '@beanwei/astro-ui'
+import { Icon } from 'astro-icon/components'
+
+## Import
+
+```tsx
+import { Dialog } from '@beanwei/astro-ui'
+```
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <Button variant="outline">Open</Button>
+      </Dialog.Trigger>
+      <Dialog.Content>
+        <Dialog.CloseTrigger asChild>
+          <Button variant="ghost" size="icon" class="absolute right-2 top-2">
+            <Icon name="lucide:x" class="h-4 w-4" />
+          </Button>
+        </Dialog.CloseTrigger>
+        <Dialog.Header>
+          <Dialog.Title>Are you absolutely sure?</Dialog.Title>
+          <Dialog.Description>
+            This action cannot be undone. This will permanently delete your account and remove your data from our servers.
+          </Dialog.Description>
+        </Dialog.Header>
+      </Dialog.Content>
+    </Dialog.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button, Card } from '@beanwei/astro-ui'
+  ---
+
+  <Dialog.Root>
+    <Dialog.Trigger asChild>
+      <Button variant="outline">Open</Button>
+    </Dialog.Trigger>
+    <Dialog.Content>
+      <Dialog.CloseTrigger asChild>
+        <Button variant="ghost" size="icon" class="absolute right-2 top-2">
+          <Icon name="lucide:x" class="h-4 w-4" />
+        </Button>
+      </Dialog.CloseTrigger>
+      <Dialog.Header>
+        <Dialog.Title>Are you absolutely sure?</Dialog.Title>
+        <Dialog.Description>
+          This action cannot be undone. This will permanently delete your account and remove your data from our servers.
+        </Dialog.Description>
+      </Dialog.Header>
+    </Dialog.Content>
+  </Dialog.Root>
+  ```
+</Preview>

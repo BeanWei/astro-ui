@@ -2,6 +2,7 @@
 import type { HTMLTag, Polymorphic } from 'astro/types'
 import render from 'dom-serializer'
 import { DomUtils, parseDocument } from 'htmlparser2'
+import { cn } from 'tailwind-variants'
 
 type Props<Tag extends HTMLTag> = Polymorphic<{
 	as: Tag
@@ -19,7 +20,8 @@ if (asChild) {
 		if (firstChild) {
 			for (const [k, v] of Object.entries(restProps)) {
 				if (v) {
-					firstChild.attribs[k] = v as any
+					firstChild.attribs[k] =
+						k === 'class' ? cn(v as string, firstChild.attribs[k])({ twMerge: true }) : (v as any)
 				}
 			}
 			childHtml = render(childDoc)
