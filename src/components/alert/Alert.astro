@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { type AlertVariantProps, alert } from '../../variants/alert.ts'
+
+interface Props extends HTMLAttributes<'div'>, AlertVariantProps {}
+
+const { variant, class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class={alert({ variant, className })}
+  role="alert"
+  data-part="alert-root"
+>
+  <slot />
+</div>
