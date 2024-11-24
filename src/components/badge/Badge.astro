@@ -7,6 +7,10 @@ interface Props extends HTMLAttributes<'div'>, BadgeVariantProps {}
 const { variant, class: className, ...restProps } = Astro.props
 ---
 
-<div {...restProps} class={badge({ variant, className })}>
+<div
+  {...restProps}
+  class={badge({ variant, className })}
+  data-part="badge-root"
+>
 	<slot />
 </div>

@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {
+	value?: string
+}
+
+const { class: className, value, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class:list={["mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=inactive]:hidden", className]}
+  data-value={value}
+  data-part="tabs-content"
+  data-state="inactive"
+  role="tabpanel"
+>
+  <slot />
+</div>

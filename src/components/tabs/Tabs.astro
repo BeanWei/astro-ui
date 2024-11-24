@@ -1,0 +1,61 @@
+---
+import { scope } from 'simple:scope'
+import type { HTMLAttributes } from 'astro/types'
+import render from 'dom-serializer'
+import { DomUtils, parseDocument } from 'htmlparser2'
+
+interface Props extends HTMLAttributes<'div'> {}
+
+const { class: className, ...restProps } = Astro.props
+
+let childHtml = await Astro.slots.render('default')
+const childDoc = parseDocument(childHtml)
+
+const initPart = (part: string) => {
+	let i = 0
+	for (const n of DomUtils.findAll(
+		(elem) => elem.type === 'tag' && elem.attribs['data-part'] === part,
+		childDoc.children
+	)) {
+		if (i === 0) {
+			n.attribs['data-state'] = 'active'
+		}
+		if (!n.attribs['data-value']) {
+			n.attribs['data-value'] = String(i)
+		}
+		i++
+	}
+}
+initPart('tabs-trigger')
+initPart('tabs-content')
+
+childHtml = render(childDoc)
+---
+
+<div
+  {...restProps}
+  class={className}
+  data-part="tabs-root"
+  data-scopeid={scope()}
+>
+  <Fragment set:html={childHtml} />
+</div>
+
+<script>
+  import { scope } from 'simple:scope'
+
+  document.querySelectorAll<HTMLElement>(`[data-scopeid="${scope()}"]`).forEach(root => {
+    const triggers = root.querySelectorAll<HTMLButtonElement>('[data-part=tabs-trigger]')
+    const contents = root.querySelectorAll<HTMLDivElement>('[data-part=tabs-content]')
+
+    triggers.forEach(el => {
+      el.addEventListener('click', () => {
+        const curVal = el.getAttribute('data-value')!
+
+        triggers.forEach(trigger => trigger.setAttribute('data-state', trigger.getAttribute('data-value') === curVal ? 'active' : 'inactive'))
+
+        contents.forEach(content => content.setAttribute('data-state', content.getAttribute('data-value') === curVal ? 'active' : 'inactive'))
+      })
+    })
+  })
+</script>

@@ -1,0 +1,59 @@
+---
+title: Tabs
+description: tabs
+---
+
+import Preview from '~/components/Preview.astro'
+import { Tabs } from '@beanwei/astro-ui'
+
+## Import
+
+```tsx
+import { Tabs } from '@beanwei/astro-ui'
+```
+
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <Tabs.Root>
+      <Tabs.List>
+        <Tabs.Trigger>Tab 1</Tabs.Trigger>
+        <Tabs.Trigger>Tab 2</Tabs.Trigger>
+        <Tabs.Trigger>Tab 3</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content>
+        Tab 1 content
+      </Tabs.Content>
+      <Tabs.Content>
+        Tab 2 content
+      </Tabs.Content>
+      <Tabs.Content>
+        Tab 3 content
+      </Tabs.Content>
+    </Tabs.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Tabs } from '@beanwei/astro-ui'
+  ---
+
+  <Tabs.Root>
+    <Tabs.List>
+      <Tabs.Trigger>Tab 1</Tabs.Trigger>
+      <Tabs.Trigger>Tab 2</Tabs.Trigger>
+      <Tabs.Trigger>Tab 3</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content>
+      Tab 1 content
+    </Tabs.Content>
+    <Tabs.Content>
+      Tab 2 content
+    </Tabs.Content>
+    <Tabs.Content>
+      Tab 3 content
+    </Tabs.Content>
+  </Tabs.Root>
+  ```
+</Preview>
