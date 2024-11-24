@@ -1,4 +1,3 @@
-import daisyui from 'daisyui'
 import animate from 'tailwindcss-animate'
 import defaultTheme from 'tailwindcss/defaultTheme.js'
 import plugin from 'tailwindcss/plugin.js'
@@ -83,8 +82,7 @@ export default function (): PresetsConfig {
 		},
 		plugins: [
 			animate,
-			daisyui,
-			plugin(({ addBase }) => {
+			plugin(({ addBase, addComponents }) => {
 				addBase({
 					':root': {
 						'--background': '0 0% 100%',
@@ -153,13 +151,42 @@ export default function (): PresetsConfig {
 						'font-feature-settings': `"rlig" 1, "calt" 1`,
 					},
 				})
+
+				addComponents({
+					// accordion unstyle by daisyui unstyled/collapse.css
+					'[data-part="accordion-item"]:not(td):not(tr):not(colgroup)': {
+						'@apply visible': {},
+					},
+					'[data-part="accordion-item"]': {
+						'@apply relative grid overflow-hidden': {},
+						'grid-template-rows': 'auto 0fr',
+						transition: 'grid-template-rows 0.2s',
+					},
+					'[data-part="accordion-item-trigger"], [data-part="accordion-item"] > input[type="checkbox"], [data-part="accordion-item"] > input[type="radio"], [data-part="accordion-item-content"]':
+						{
+							'@apply col-start-1 row-start-1': {},
+						},
+					'[data-part="accordion-item"] > input[type="checkbox"], [data-part="accordion-item"] > input[type="radio"]':
+						{
+							'@apply appearance-none opacity-0': {},
+						},
+					'[data-part="accordion-item-content"]': {
+						'@apply invisible col-start-1 row-start-2 min-h-0': {},
+						transition: 'visibility 0.2s',
+					},
+					'[data-part="accordion-item"][open], [data-part="accordion-item"]:focus': {
+						'grid-template-rows': 'auto 1fr',
+					},
+					'[data-part="accordion-item"]:has(> input[type="checkbox"]:checked), [data-part="accordion-item"]:has(> input[type="radio"]:checked)':
+						{
+							'grid-template-rows': 'auto 1fr',
+						},
+					'[data-part="accordion-item"][open] > [data-part="accordion-item-content"], [data-part="accordion-item"]:focus > [data-part="accordion-item-content"], [data-part="accordion-item"] > input[type="checkbox"]:checked ~ [data-part="accordion-item-content"], [data-part="accordion-item"] > input[type="radio"]:checked ~ [data-part="accordion-item-content"]':
+						{
+							'@apply visible min-h-fit': {},
+						},
+				})
 			}),
 		],
-		daisyui: {
-			styled: false,
-			base: false,
-			logs: false,
-			prefix: 'du-',
-		},
 	}
 }

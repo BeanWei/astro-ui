@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.12",
-    "daisyui": "^4.12.14",
     "dom-serializer": "^2.0.0",
     "htmlparser2": "^9.1.0",
     "tailwind-variants": "^0.3.0",

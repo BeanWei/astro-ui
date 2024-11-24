@@ -7,13 +7,13 @@ const { class: className, ...restProps } = Astro.props
 ---
 
 <dialog
-  class='du-modal fixed inset-0 z-50 bg-black/80 open:animate-in open:fade-in-0 open:zoom-in-95'
+  class='fixed inset-0 z-50 backdrop:bg-black/80 group'
   role="dialog"
   data-part="dialog-content"
 >
   <div
     {...restProps}
-    class:list={["du-modal-box fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 border bg-background p-6 shadow-lg sm:rounded-lg", className]}
+    class:list={["fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] border bg-background p-6 shadow-lg sm:rounded-lg duration-200 group-open:animate-in group-open:fade-in-0 group-open:zoom-in-95  group-open:slide-in-from-left-1/2 group-open:slide-in-from-top-[48%]", className]}
   >
     <slot />
   </div>
