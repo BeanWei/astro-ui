@@ -1,0 +1,39 @@
+---
+title: Tooltip
+description: tooltip
+---
+
+import Preview from '~/components/Preview.astro'
+import { Button, Tooltip } from '@beanwei/astro-ui'
+
+## Import
+
+```tsx
+import { Tooltip } from '@beanwei/astro-ui'
+```
+
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline">Hover</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content>Tooltip content</Tooltip.Content>
+    </Tooltip.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button, Tooltip } from '@beanwei/astro-ui'
+  ---
+
+  <Tooltip.Root>
+    <Tooltip.Trigger asChild>
+      <Button variant="outline">Hover</Button>
+    </Tooltip.Trigger>
+    <Tooltip.Content>Tooltip content</Tooltip.Content>
+  </Tooltip.Root>
+  ```
+</Preview>

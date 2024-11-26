@@ -1,0 +1,53 @@
+---
+import { scope } from 'simple:scope'
+import type { Placement } from '@floating-ui/dom'
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {
+	placement?: Placement
+}
+
+const { placement = 'top', class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class={className}
+  data-part="tooltip-root"
+  data-ctx-placement={placement}
+  data-scopeid={scope()}
+>
+  <slot />
+</div>
+
+<script>
+  import { scope } from 'simple:scope'
+  import {computePosition, flip, offset, shift} from '@floating-ui/dom'
+  import type { Placement } from '@floating-ui/dom'
+
+  document.querySelectorAll<HTMLElement>(`[data-scopeid="${scope()}"]`).forEach(root => {
+    const triggerEl = root.querySelector<HTMLElement>('[data-part=tooltip-trigger]')!
+    const contentEl = root.querySelector<HTMLElement>('[data-part=tooltip-content]')!
+    const ctxPlacement = root.getAttribute('data-ctx-placement') as Placement
+
+    triggerEl.addEventListener('pointerenter', () => {
+      contentEl.setAttribute('data-state', 'open')
+      computePosition(triggerEl, contentEl, {
+        placement: ctxPlacement,
+        middleware: [
+          flip(),
+          shift(),
+          offset(6),
+        ],
+      }).then(({x, y}) => {
+        Object.assign(contentEl.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        })
+      })
+    })
+    triggerEl.addEventListener('pointerleave', () => {
+      contentEl.setAttribute('data-state', 'closed')
+    })
+  })
+</script>
