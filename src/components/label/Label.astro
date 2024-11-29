@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'label'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<label
+  {...restProps}
+  data-part="label-root"
+  class:list={['text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70', className]}
+>
+  <slot />
+</label>
