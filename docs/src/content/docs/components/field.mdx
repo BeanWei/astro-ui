@@ -22,7 +22,7 @@ import { Field } from '@beanwei/astro-ui'
   </Fragment>
   ```tsx
   ---
-  import { Input } from '@beanwei/astro-ui'
+  import { Field } from '@beanwei/astro-ui'
   ---
 
   <Field.Text
@@ -46,7 +46,7 @@ import { Field } from '@beanwei/astro-ui'
   </Fragment>
   ```tsx
   ---
-  import { Input, Label } from '@beanwei/astro-ui'
+  import { Field } from '@beanwei/astro-ui'
   import { Icon } from 'astro-icon/components'
   ---
 
@@ -54,5 +54,21 @@ import { Field } from '@beanwei/astro-ui'
     <Icon slot="prefix" name="lucide:at-sign" size={16} aria-hidden="true" />
     <Icon slot="suffix" name="lucide:mail" size={16} aria-hidden="true" />
   </Field.Text>
+  ```
+</Preview>
+
+
+## Usage of Field.Number
+
+<Preview>
+  <Fragment slot="preview">
+    <Field.Number label="Price" placeholder="0.00" min="0" max="100" step="20" description="Enter value between 0 and 100." />
+  </Fragment>
+  ```tsx
+  ---
+  import { Field } from '@beanwei/astro-ui'
+  ---
+
+  <Field.Number label="Price" placeholder="0.00" min="0" max="100" step="20" description="Enter value between 0 and 100." />
   ```
 </Preview>

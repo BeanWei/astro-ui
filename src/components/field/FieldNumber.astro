@@ -1,0 +1,68 @@
+---
+import { scope } from 'simple:scope'
+import type { HTMLAttributes } from 'astro/types'
+import useId from '../../utils/useId'
+
+interface Props extends HTMLAttributes<'input'> {
+	label?: string
+	description?: string
+}
+
+const { label, description, class: className, ...restProps } = Astro.props
+
+const fieldId = useId(scope())
+
+const labelHtml = Astro.slots.has('label') ? await Astro.slots.render('label') : label
+
+const descriptionHtml = Astro.slots.has('description')
+	? await Astro.slots.render('description')
+	: description
+---
+
+<div class="space-y-2" data-part="field-root">
+  {labelHtml && (
+    <label
+      data-part="field-label"
+      for={fieldId}
+      class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+    >
+      <Fragment set:html={labelHtml} />
+    </label>
+  )}
+  <div class="relative">
+    <button
+      class="absolute inset-y-0 start-0 flex items-center justify-center ps-3 text-sm text-muted-foreground transition-colors hover:text-accent-foreground peer-disabled:opacity-50 peer-disabled:pointer-events-none peer-disabled:cursor-not-allowed"
+      data-part="field-number-decrement"
+      onclick="this.nextElementSibling.stepDown()"
+    >
+      <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+    </button>
+    <input
+      {...restProps}
+      data-part="field-number"
+      id={fieldId}
+      type="number"
+      class:list={[
+        'peer flex h-9 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground shadow-sm shadow-black/5 transition-shadow placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/20 disabled:cursor-not-allowed disabled:opacity-50 ps-9 pe-9 appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+        className,
+      ]}
+    />
+    <button
+      class="absolute inset-y-0 end-0 flex items-center justify-center pe-3 text-sm text-muted-foreground transition-colors hover:text-accent-foreground peer-disabled:opacity-50 peer-disabled:pointer-events-none peer-disabled:cursor-not-allowed"
+      data-part="field-text-increment"
+      onclick="this.previousElementSibling.stepUp()"
+    >
+      <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+    </button>
+  </div>
+  {descriptionHtml && (
+    <p
+      data-part="field-description"
+      class="mt-2 text-xs text-muted-foreground"
+      role="region"
+      aria-live="polite"
+    >
+      <Fragment set:html={descriptionHtml} />
+    </p>
+  )}
+</div>
