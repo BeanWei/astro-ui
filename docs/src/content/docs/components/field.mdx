@@ -58,6 +58,27 @@ import { Field } from '@beanwei/astro-ui'
 </Preview>
 
 
+### Textarea
+
+<Preview>
+  <Fragment slot="preview">
+    <Field.Text placeholder="Enter your description" type="textarea" label="Description" description="Enter a concise description of your project." />
+  </Fragment>
+  ```tsx
+  ---
+  import { Field } from '@beanwei/astro-ui'
+  ---
+
+  <Field.Text
+    placeholder="Enter your description"
+    type="textarea"
+    label="Description"
+    description="Enter a concise description of your project."
+  />
+  ```
+</Preview>
+
+
 ## Usage of Field.Number
 
 <Preview>
