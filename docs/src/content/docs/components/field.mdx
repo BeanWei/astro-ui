@@ -1,0 +1,58 @@
+---
+title: Field
+description: field
+---
+
+import Preview from '~/components/Preview.astro'
+import { Field } from '@beanwei/astro-ui'
+import { Icon } from 'astro-icon/components'
+
+## Import
+
+```tsx
+import { Field } from '@beanwei/astro-ui'
+```
+
+
+## Usage of Field.Text
+
+<Preview>
+  <Fragment slot="preview">
+    <Field.Text placeholder="Email" type="email" label="Email" description="We'll never share your email with anyone else." />
+  </Fragment>
+  ```tsx
+  ---
+  import { Input } from '@beanwei/astro-ui'
+  ---
+
+  <Field.Text
+    placeholder="Email"
+    type="email"
+    label="Email"
+    description="We'll never share your email with anyone else."
+  />
+  ```
+</Preview>
+
+
+### Start & End Content
+
+<Preview>
+  <Fragment slot="preview">
+    <Field.Text placeholder="Email" type="email" label="Email" description="We'll never share your email with anyone else.">
+      <Icon slot="prefix" name="lucide:at-sign" size={16} aria-hidden="true" />
+      <Icon slot="suffix" name="lucide:mail" size={16} aria-hidden="true" />
+    </Field.Text>
+  </Fragment>
+  ```tsx
+  ---
+  import { Input, Label } from '@beanwei/astro-ui'
+  import { Icon } from 'astro-icon/components'
+  ---
+
+  <Field.Text placeholder="Email" type="email" label="Email" description="We'll never share your email with anyone else.">
+    <Icon slot="prefix" name="lucide:at-sign" size={16} aria-hidden="true" />
+    <Icon slot="suffix" name="lucide:mail" size={16} aria-hidden="true" />
+  </Field.Text>
+  ```
+</Preview>

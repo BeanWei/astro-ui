@@ -3,7 +3,7 @@ import { scope } from 'simple:scope'
 import type { HTMLAttributes } from 'astro/types'
 import render from 'dom-serializer'
 import { DomUtils, parseDocument } from 'htmlparser2'
-import uniqId from '../../utils/uniqId'
+import useId from '../../utils/useId'
 
 interface Props extends HTMLAttributes<'div'> {}
 
@@ -11,7 +11,7 @@ const props = Astro.props
 
 let childHtml = await Astro.slots.render('default')
 const childDoc = parseDocument(childHtml.trim())
-const dialogId = uniqId(`${scope()}_`)
+const dialogId = useId(scope())
 for (const n of DomUtils.findAll((node) => node.type === 'tag', childDoc.children)) {
 	const partName = n.attribs['data-part']
 	if (partName === 'dialog-trigger') {

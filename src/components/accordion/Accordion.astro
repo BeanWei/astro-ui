@@ -3,7 +3,7 @@ import { scope } from 'simple:scope'
 import type { HTMLAttributes } from 'astro/types'
 import render from 'dom-serializer'
 import { DomUtils, parseDocument } from 'htmlparser2'
-import uniqId from '../../utils/uniqId'
+import useId from '../../utils/useId'
 
 interface Props extends HTMLAttributes<'div'> {
 	multiple?: boolean
@@ -15,7 +15,7 @@ let childHtml = ''
 if (!multiple) {
 	childHtml = await Astro.slots.render('default')
 	const childDoc = parseDocument(childHtml.trim())
-	const itemName = uniqId(`${scope()}_`)
+	const itemName = useId(scope())
 	for (const n of DomUtils.findAll((node) => node.tagName === 'input', childDoc.children)) {
 		n.attribs.name = itemName
 	}
