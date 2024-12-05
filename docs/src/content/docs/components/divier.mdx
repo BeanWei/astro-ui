@@ -1,0 +1,45 @@
+---
+title: Divider
+description: divider
+---
+
+import Preview from '~/components/Preview.astro'
+import { Divider } from '@beanwei/astro-ui'
+
+## Import
+
+```tsx
+import { Divider } from '@beanwei/astro-ui'
+```
+
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <div class="grid gap-4 w-full">
+      <div>A</div>
+      <Divider>OR</Divider>
+      <div class="flex gap-4">
+        <div>B</div>
+        <Divider orientation="vertical" />
+        <div>C</div>
+      </div>
+    </div>
+  </Fragment>
+  ```tsx
+  ---
+  import { Divider } from '@beanwei/astro-ui'
+  ---
+
+  <div class="grid gap-4 w-full">
+    <div>A</div>
+    <Divider>OR</Divider>
+    <div class="flex gap-4">
+      <div>B</div>
+      <Divider orientation="vertical" />
+      <div>C</div>
+    </div>
+  </div>
+  ```
+</Preview>

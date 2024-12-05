@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { type DividerVariantProps, divider } from '../../variants'
+
+interface Props extends HTMLAttributes<'div'>, DividerVariantProps {}
+
+const { orientation, class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class={divider({ orientation, className })}
+  data-part="divider-root"
+>
+	<slot />
+</div>
