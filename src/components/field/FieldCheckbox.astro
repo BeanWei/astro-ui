@@ -1,0 +1,65 @@
+---
+import { scope } from 'simple:scope'
+import type { HTMLAttributes } from 'astro/types'
+import useId from '../../utils/useId'
+import { type CheckboxVariantProps, checkbox } from '../../variants'
+
+interface Props extends HTMLAttributes<'input'>, CheckboxVariantProps {
+	label?: string
+	description?: string
+}
+
+const { label, description, mode, align, class: className, ...restProps } = Astro.props
+
+const { base, control } = checkbox({ mode, align })
+
+const fieldId = useId(scope())
+
+const labelHtml = Astro.slots.has('label') ? await Astro.slots.render('label') : label
+
+const descriptionHtml = Astro.slots.has('description')
+	? await Astro.slots.render('description')
+	: description
+---
+
+<label
+  data-part="field-root"
+  for={fieldId}
+  class={base()}
+  onclick="this.firstElementChild.checked = !this.firstElementChild.checked"
+>
+  <input
+    id={fieldId}
+    type="checkbox"
+    class="peer"
+    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; overflow-wrap: normal;"
+  />
+  <button
+    data-part="field-checkbox"
+    type="button"
+    role="checkbox"
+    class={control()}
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  </button>
+  <div class="grid grow gap-2">
+    {labelHtml && (
+      <span
+        data-part="field-label"
+        class="text-sm font-medium leading-4 text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        <Fragment set:html={labelHtml} />
+      </span>
+    )}
+    {descriptionHtml && (
+      <p
+        data-part="field-description"
+        class="text-xs text-muted-foreground"
+        role="region"
+        aria-live="polite"
+      >
+        <Fragment set:html={descriptionHtml} />
+      </p>
+    )}
+  </div>
+</label>
