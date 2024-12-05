@@ -167,3 +167,61 @@ import { Field } from '@beanwei/astro-ui'
   />
   ```
 </Preview>
+
+
+## Usage of Field.Radio
+
+<Preview>
+  <Fragment slot="preview">
+    <Field.Radio
+      label="I agree to the terms of service"
+      description="You can use this radio with a label and a description."
+    />
+  </Fragment>
+  ```tsx
+  ---
+  import { Field } from '@beanwei/astro-ui'
+  ---
+
+  <Field.Radio
+    label="I agree to the terms of service"
+    description="You can use this radio with a label and a description."
+  />
+  ```
+</Preview>
+
+
+### Radio Card
+
+<Preview>
+  <Fragment slot="preview">
+    <Field.Radio
+      label="I agree to the terms of service"
+      description="You can use this radio with a label and a description."
+      mode="card"
+    />
+    <Field.Radio
+      label="I agree to the terms of service"
+      description="You can use this radio with a label and a description."
+      mode="card"
+      align="right"
+    />
+  </Fragment>
+  ```tsx
+  ---
+  import { Field } from '@beanwei/astro-ui'
+  ---
+
+  <Field.Radio
+    label="I agree to the terms of service"
+    description="You can use this radio with a label and a description."
+    mode="card"
+  />
+  <Field.Radio
+    label="I agree to the terms of service"
+    description="You can use this radio with a label and a description."
+    mode="card"
+    align="right"
+  />
+  ```
+</Preview>
