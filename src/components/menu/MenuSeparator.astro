@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {}
+
+const { class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class:list={['-mx-1 my-1 h-px bg-muted', className]}
+  data-part="menu-separator"
+>
+  <slot />
+</div>

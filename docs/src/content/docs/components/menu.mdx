@@ -1,0 +1,135 @@
+---
+title: Menu
+description: menu
+---
+
+import Preview from '~/components/Preview.astro'
+import { Button, Popup, Menu } from '@beanwei/astro-ui'
+import { Icon } from 'astro-icon/components'
+
+## Import
+
+```tsx
+import { Menu } from '@beanwei/astro-ui'
+```
+
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <Menu.Root class="w-56">
+      <Menu.Label>My Account</Menu.Label>
+      <Menu.Separator />
+      <Menu.Item>Profile</Menu.Item>
+      <Menu.Item>Billing</Menu.Item>
+      <Menu.Item>Settings</Menu.Item>
+      <Menu.Separator />
+      <Menu.Item>Team</Menu.Item>
+      <Menu.Item>
+        Invite users
+        <Icon name="lucide:chevron-right" class="ml-auto h-4 w-4" />
+        <Menu.Submenu>
+          <Menu.Item>Email</Menu.Item>
+          <Menu.Item>Message</Menu.Item>
+          <Menu.Separator />
+          <Menu.Item>More...</Menu.Item>
+        </Menu.Submenu>
+      </Menu.Item>
+    </Menu.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Menu } from '@beanwei/astro-ui'
+  import { Icon } from 'astro-icon/components'
+  ---
+
+  <Menu.Root class="w-56">
+    <Menu.Label>My Account</Menu.Label>
+    <Menu.Separator />
+    <Menu.Item>Profile</Menu.Item>
+    <Menu.Item>Billing</Menu.Item>
+    <Menu.Item>Settings</Menu.Item>
+    <Menu.Separator />
+    <Menu.Item>Team</Menu.Item>
+    <Menu.Item>
+      Invite users
+      <Icon name="lucide:chevron-right" class="ml-auto h-4 w-4" />
+      <Menu.Submenu>
+        <Menu.Item>Email</Menu.Item>
+        <Menu.Item>Message</Menu.Item>
+        <Menu.Separator />
+        <Menu.Item>More...</Menu.Item>
+      </Menu.Submenu>
+    </Menu.Item>
+  </Menu.Root>
+  ```
+</Preview>
+
+
+### Dropdown Menu
+
+<Preview>
+  <Fragment slot="preview">
+    <Popup.Root placement='top'>
+      <Popup.Trigger asChild>
+        <Button variant="outline">Popup</Button>
+      </Popup.Trigger>
+      <Popup.Content>
+        <Menu.Root class="w-56">
+          <Menu.Label>My Account</Menu.Label>
+          <Menu.Separator />
+          <Menu.Item>Profile</Menu.Item>
+          <Menu.Item>Billing</Menu.Item>
+          <Menu.Item>Settings</Menu.Item>
+          <Menu.Separator />
+          <Menu.Item>Team</Menu.Item>
+          <Menu.Item>
+            Invite users
+            <Icon name="lucide:chevron-right" class="ml-auto h-4 w-4" />
+            <Menu.Submenu>
+              <Menu.Item>Email</Menu.Item>
+              <Menu.Item>Message</Menu.Item>
+              <Menu.Separator />
+              <Menu.Item>More...</Menu.Item>
+            </Menu.Submenu>
+          </Menu.Item>
+        </Menu.Root>
+      </Popup.Content>
+    </Popup.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button, Popup, Menu } from '@beanwei/astro-ui'
+  import { Icon } from 'astro-icon/components'
+  ---
+
+  <Popup.Root placement='top'>
+    <Popup.Trigger asChild>
+      <Button variant="outline">Popup</Button>
+    </Popup.Trigger>
+    <Popup.Content>
+      <Menu.Root class="w-56">
+        <Menu.Label>My Account</Menu.Label>
+        <Menu.Separator />
+        <Menu.Item>Profile</Menu.Item>
+        <Menu.Item>Billing</Menu.Item>
+        <Menu.Item>Settings</Menu.Item>
+        <Menu.Separator />
+        <Menu.Item>Team</Menu.Item>
+        <Menu.Item>
+          Invite users
+          <Icon name="lucide:chevron-right" class="ml-auto h-4 w-4" />
+          <Menu.Submenu>
+            <Menu.Item>Email</Menu.Item>
+            <Menu.Item>Message</Menu.Item>
+            <Menu.Separator />
+            <Menu.Item>More...</Menu.Item>
+          </Menu.Submenu>
+        </Menu.Item>
+      </Menu.Root>
+    </Popup.Content>
+  </Popup.Root>
+  ```
+</Preview>
+

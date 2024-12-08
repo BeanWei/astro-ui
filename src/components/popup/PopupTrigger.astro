@@ -1,0 +1,15 @@
+---
+import type { ComponentProps } from 'astro/types'
+import { Primitive } from '../primitive/index.ts'
+
+interface Props extends ComponentProps<typeof Primitive> {}
+
+const props = Astro.props
+---
+
+<Primitive
+  {...props}
+  data-part="popup-trigger"
+>
+  <slot />
+</Primitive>

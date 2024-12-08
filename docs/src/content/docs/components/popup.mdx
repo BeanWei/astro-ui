@@ -1,0 +1,57 @@
+---
+title: Popup
+description: popup
+---
+
+import Preview from '~/components/Preview.astro'
+import { Button, Popup } from '@beanwei/astro-ui'
+
+## Import
+
+```tsx
+import { Popup } from '@beanwei/astro-ui'
+```
+
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <Popup.Root placement='top'>
+      <Popup.Trigger asChild>
+        <Button variant="outline">Popup</Button>
+      </Popup.Trigger>
+      <Popup.Content>
+        <div class="p-3 space-y-1">
+          <p className="text-sm font-semibold">Tooltip with title</p>
+          <p className="text-xs">
+            Tooltips are made to be highly customizable, with features like dynamic placement,
+            rich content, and a robust API. You can even use them as a full-featured dropdown menu
+            by setting the <code>trigger</code> prop to <code>click</code>.
+          </p>
+        </div>
+      </Popup.Content>
+    </Popup.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Button, Popup } from '@beanwei/astro-ui'
+  ---
+
+  <Popup.Root placement='top'>
+    <Popup.Trigger asChild>
+      <Button variant="outline">Popup</Button>
+    </Popup.Trigger>
+    <Popup.Content>
+      <div class="p-3 space-y-1">
+        <p className="text-sm font-semibold">Tooltip with title</p>
+        <p className="text-xs">
+          Tooltips are made to be highly customizable, with features like dynamic placement,
+          rich content, and a robust API. You can even use them as a full-featured dropdown menu
+          by setting the <code>trigger</code> prop to <code>click</code>.
+        </p>
+      </div>
+    </Popup.Content>
+  </Popup.Root>
+  ```
+</Preview>

@@ -1,0 +1,83 @@
+---
+import { scope } from 'simple:scope'
+import type { Placement } from '@floating-ui/dom'
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {
+	placement?: Placement
+	trigger?: 'hover' | 'click'
+}
+
+const { placement = 'top', trigger = 'click', class: className, ...restProps } = Astro.props
+---
+
+<div
+  {...restProps}
+  class={className}
+  data-part="popup-root"
+  data-ctx-placement={placement}
+  data-ctx-trigger={trigger}
+  data-scopeid={scope()}
+>
+  <slot />
+</div>
+
+<script>
+  import { scope } from 'simple:scope'
+  import {computePosition, flip, offset, shift} from '@floating-ui/dom'
+  import type { Placement } from '@floating-ui/dom'
+
+  document.querySelectorAll<HTMLElement>(`[data-scopeid="${scope()}"]`).forEach(root => {
+    const triggerEl = root.querySelector<HTMLElement>('[data-part=popup-trigger]')!
+    const contentEl = root.querySelector<HTMLElement>('[data-part=popup-content]')!
+    const ctxPlacement = root.getAttribute('data-ctx-placement') as Placement
+    const ctxTrigger = root.getAttribute('data-ctx-trigger') as 'hover' | 'click'
+
+    const open = () => {
+      contentEl.setAttribute('tabindex', '-1')
+      contentEl.setAttribute('data-state', 'open')
+      computePosition(triggerEl, contentEl, {
+        placement: ctxPlacement,
+        middleware: [
+        offset(6),
+        flip(),
+        shift({ padding: 5 }),
+      ],
+      }).then(({x, y}) => {
+        Object.assign(contentEl.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        })
+      })
+      contentEl.focus()
+    }
+    const close = () => {
+      contentEl.setAttribute('data-state', 'closed')
+      contentEl.removeAttribute('tabindex')
+    }
+
+    if (ctxTrigger === 'hover') {
+      triggerEl.addEventListener('pointerenter', open)
+      triggerEl.addEventListener('pointerleave', close)
+    } else {
+      triggerEl.addEventListener('click', () => contentEl.getAttribute('data-state') === 'open' ? close() : open())
+      contentEl.addEventListener('focusout', (e) => {
+        if (triggerEl.contains(e.relatedTarget as Node) || contentEl.contains(e.relatedTarget as Node)) {
+          return
+        }
+        close()
+      })
+    }
+
+    // logic for dropdown-menu
+    if (contentEl.querySelector<HTMLElement>('[data-part=menu-root]')) {
+      contentEl.addEventListener('click', (e) => {
+        const dataPart = (e.target as HTMLElement).getAttribute('data-part')
+        if (dataPart === 'menu-label' || (e.target as HTMLElement).querySelector<HTMLElement>('[data-part=menu-item]')) {
+          return
+        }
+        close()
+      })
+    }
+  })
+</script>

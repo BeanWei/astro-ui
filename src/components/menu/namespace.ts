@@ -1,0 +1,5 @@
+export { default as Root } from './Menu.astro'
+export { default as Item } from './MenuItem.astro'
+export { default as Label } from './MenuLabel.astro'
+export { default as Separator } from './MenuSeparator.astro'
+export { default as Submenu } from './MenuSubmenu.astro'
