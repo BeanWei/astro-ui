@@ -1,0 +1,14 @@
+---
+import { scope } from 'simple:scope'
+import { Button } from '@beanwei/astro-ui'
+---
+
+<Button data-target={scope()} variant="outline">Add Toast</Button>
+
+<script>
+  import { scope } from 'simple:scope'
+  import { toast } from '@beanwei/astro-ui'
+
+  const btnEl = document.querySelector<HTMLDialogElement>(`[data-target="${scope()}"]`)!
+  btnEl.addEventListener('click', () => toast.create())
+</script>

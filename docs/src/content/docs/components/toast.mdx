@@ -1,0 +1,40 @@
+---
+title: Toast
+description: toast
+---
+
+import Preview from '~/components/Preview.astro'
+import AddToast from '~/examples/AddToast.astro'
+import { Button, toast } from '@beanwei/astro-ui'
+
+## Import
+
+```tsx
+import { toast } from '@beanwei/astro-ui'
+```
+
+## Usage
+
+<Preview>
+  <Fragment slot="preview">
+    <AddToast />
+  </Fragment>
+  ```tsx
+  ---
+  import { scope } from 'simple:scope'
+  import { Button } from '@beanwei/astro-ui'
+  ---
+
+  <Button data-target={scope()} variant="outline">Add Toast</Button>
+
+  <script>
+    import { scope } from 'simple:scope'
+    import { toast } from '@beanwei/astro-ui'
+
+    const btnEl = document.querySelector<HTMLDialogElement>(`[data-target="${scope()}"]`)!
+    btnEl.addEventListener('click', () => toast.create())
+  </script>
+
+  ```
+</Preview>
+
