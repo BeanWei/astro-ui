@@ -31,7 +31,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.6.12",
     "dom-serializer": "^2.0.0",
-    "htmlparser2": "^9.1.0",
+    "htmlparser2": "^10.0.0",
     "tailwind-variants": "^0.3.0",
     "tailwindcss-animate": "^1.0.7"
   },

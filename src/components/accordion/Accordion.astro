@@ -16,7 +16,7 @@ if (!multiple) {
 	childHtml = await Astro.slots.render('default')
 	const childDoc = parseDocument(childHtml.trim())
 	const itemName = useId(scope())
-	for (const n of DomUtils.findAll((node) => node.tagName === 'input', childDoc.children)) {
+	for (const n of DomUtils.findAll((node) => node.tagName === 'details', childDoc)) {
 		n.attribs.name = itemName
 	}
 	childHtml = render(childDoc)
