@@ -32,7 +32,7 @@ import { toast } from '@beanwei/astro-ui'
     import { toast } from '@beanwei/astro-ui'
 
     const btnEl = document.querySelector<HTMLDialogElement>(`[data-target="${scope()}"]`)!
-    btnEl.addEventListener('click', () => toast.create())
+    btnEl.addEventListener('click', () => toast.create({ title: 'Just a quick note!', type: 'info' }))
   </script>
 
   ```

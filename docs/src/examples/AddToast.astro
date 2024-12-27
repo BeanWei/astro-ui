@@ -3,12 +3,19 @@ import { scope } from 'simple:scope'
 import { Button } from '@beanwei/astro-ui'
 ---
 
-<Button data-target={scope()} variant="outline">Add Toast</Button>
+<div class="flex flex-row gap-4 flex-wrap">
+  <Button data-target={scope("toast_info")} variant="outline">Info</Button>
+  <Button data-target={scope("toast_success")} variant="outline">Success</Button>
+  <Button data-target={scope("toast_warning")} variant="outline">Warning</Button>
+  <Button data-target={scope("toast_error")} variant="outline">Error</Button>
+</div>
 
 <script>
   import { scope } from 'simple:scope'
   import { toast } from '@beanwei/astro-ui'
 
-  const btnEl = document.querySelector<HTMLDialogElement>(`[data-target="${scope()}"]`)!
-  btnEl.addEventListener('click', () => toast.create())
+  document.querySelector<HTMLDialogElement>(`[data-target="${scope("toast_info")}"]`)!.addEventListener('click', () => toast.create({ title: 'Just a quick note!', type: 'info' }))
+  document.querySelector<HTMLDialogElement>(`[data-target="${scope("toast_success")}"]`)!.addEventListener('click', () => toast.create({ title: 'Completed successfully!', type: 'success' }))
+  document.querySelector<HTMLDialogElement>(`[data-target="${scope("toast_warning")}"]`)!.addEventListener('click', () => toast.create({ title: 'Some information is missing!', type: 'warning' }))
+  document.querySelector<HTMLDialogElement>(`[data-target="${scope("toast_error")}"]`)!.addEventListener('click', () => toast.create({ title: 'An error occurred!', type: 'error' }))
 </script>
