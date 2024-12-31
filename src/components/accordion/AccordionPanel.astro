@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import { accordion } from '../../variants'
 
 interface Props extends HTMLAttributes<'div'> {}
 
@@ -8,11 +9,11 @@ const { class: className, ...restProps } = Astro.props
 
 <div
   {...restProps}
-  class="overflow-hidden text-sm"
+  class={accordion().panel()}
   data-part="accordion-panel"
   role="region"
 >
-  <div class:list={['pb-4 pt-0', className]}>
+  <div class:list={["pt-0 pb-2 text-muted-foreground", className]}>
     <slot />
   </div>
 </div>

@@ -4,12 +4,13 @@ import type { HTMLAttributes } from 'astro/types'
 import render from 'dom-serializer'
 import { DomUtils, parseDocument } from 'htmlparser2'
 import useId from '../../utils/useId'
+import { type AccordionVariantProps, accordion } from '../../variants'
 
-interface Props extends HTMLAttributes<'div'> {
+interface Props extends HTMLAttributes<'div'>, AccordionVariantProps {
 	multiple?: boolean
 }
 
-const { multiple, class: className, ...restProps } = Astro.props
+const { multiple, variant = 'light', class: className, ...restProps } = Astro.props
 
 let childHtml = ''
 if (!multiple) {
@@ -25,8 +26,9 @@ if (!multiple) {
 
 <div
   {...restProps}
-  class={className}
+  class={accordion().base({ variant, className })}
   data-part="accordion-root"
+  data-accordion-variant={variant}
 >
   {multiple ? <slot /> : <Fragment set:html={childHtml} />}
 </div>

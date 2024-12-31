@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import { accordion } from '../../variants'
 
 interface Props extends HTMLAttributes<'details'> {
 	value?: string
@@ -10,7 +11,7 @@ const { class: className, value, ...restProps } = Astro.props
 
 <details
   {...restProps}
-  class:list={['border-b', className]}
+  class={accordion().item({ className })}
   data-value={value}
   data-part="accordion-item"
 >

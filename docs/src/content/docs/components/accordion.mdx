@@ -19,28 +19,16 @@ import { Accordion } from '@beanwei/astro-ui'
   <Fragment slot="preview">
     <Accordion.Root class="w-full">
       <Accordion.Item value="1">
-        <Accordion.Header>
-          Item 1
-        </Accordion.Header>
-        <Accordion.Panel >
-          Item 1 content
-        </Accordion.Panel >
+        <Accordion.Header>Item 1</Accordion.Header>
+        <Accordion.Panel>Item 1 content</Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item value="2">
-        <Accordion.Header>
-          Item 2
-        </Accordion.Header>
-        <Accordion.Panel >
-          Item 2 content
-        </Accordion.Panel >
+        <Accordion.Header>Item 2</Accordion.Header>
+        <Accordion.Panel>Item 2 content</Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item value="3">
-        <Accordion.Header>
-          Item 3
-        </Accordion.Header>
-        <Accordion.Panel >
-          Item 3 content
-        </Accordion.Panel >
+        <Accordion.Header>Item 3</Accordion.Header>
+        <Accordion.Panel>Item 3 content</Accordion.Panel>
       </Accordion.Item>
     </Accordion.Root>
   </Fragment>
@@ -51,28 +39,100 @@ import { Accordion } from '@beanwei/astro-ui'
 
   <Accordion.Root>
     <Accordion.Item value="1">
-      <Accordion.Header>
-        Item 1
-      </Accordion.Header>
-      <Accordion.Panel >
-        Item 1 content
-      </Accordion.Panel >
+      <Accordion.Header>Item 1</Accordion.Header>
+      <Accordion.Panel>Item 1 content</Accordion.Panel>
     </Accordion.Item>
     <Accordion.Item value="2">
-      <Accordion.Header>
-        Item 2
-      </Accordion.Header>
-      <Accordion.Panel >
-        Item 2 content
-      </Accordion.Panel >
+      <Accordion.Header>Item 2</Accordion.Header>
+      <Accordion.Panel>Item 2 content</Accordion.Panel>
     </Accordion.Item>
     <Accordion.Item value="3">
-      <Accordion.Header>
-        Item 3
-      </Accordion.Header>
-      <Accordion.Panel >
-        Item 3 content
-      </Accordion.Panel >
+      <Accordion.Header>Item 3</Accordion.Header>
+      <Accordion.Panel>Item 3 content</Accordion.Panel>
+    </Accordion.Item>
+  </Accordion.Root>
+  ```
+</Preview>
+
+
+### Bordered
+
+<Preview>
+  <Fragment slot="preview">
+    <Accordion.Root class="w-full" variant="bordered">
+      <Accordion.Item value="1">
+        <Accordion.Header>Item 1</Accordion.Header>
+        <Accordion.Panel>Item 1 content</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item value="2">
+        <Accordion.Header>Item 2</Accordion.Header>
+        <Accordion.Panel>Item 2 content</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item value="3">
+        <Accordion.Header>Item 3</Accordion.Header>
+        <Accordion.Panel>Item 3 content</Accordion.Panel>
+      </Accordion.Item>
+    </Accordion.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Accordion } from '@beanwei/astro-ui'
+  ---
+
+  <Accordion.Root variant="bordered">
+    <Accordion.Item value="1">
+      <Accordion.Header>Item 1</Accordion.Header>
+      <Accordion.Panel>Item 1 content</Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="2">
+      <Accordion.Header>Item 2</Accordion.Header>
+      <Accordion.Panel>Item 2 content</Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="3">
+      <Accordion.Header>Item 3</Accordion.Header>
+      <Accordion.Panel>Item 3 content</Accordion.Panel>
+    </Accordion.Item>
+  </Accordion.Root>
+  ```
+</Preview>
+
+
+### Splitted
+
+<Preview>
+  <Fragment slot="preview">
+    <Accordion.Root class="w-full" variant="splitted">
+      <Accordion.Item value="1">
+        <Accordion.Header>Item 1</Accordion.Header>
+        <Accordion.Panel>Item 1 content</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item value="2">
+        <Accordion.Header>Item 2</Accordion.Header>
+        <Accordion.Panel>Item 2 content</Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item value="3">
+        <Accordion.Header>Item 3</Accordion.Header>
+        <Accordion.Panel>Item 3 content</Accordion.Panel>
+      </Accordion.Item>
+    </Accordion.Root>
+  </Fragment>
+  ```tsx
+  ---
+  import { Accordion } from '@beanwei/astro-ui'
+  ---
+
+  <Accordion.Root variant="splitted">
+    <Accordion.Item value="1">
+      <Accordion.Header>Item 1</Accordion.Header>
+      <Accordion.Panel>Item 1 content</Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="2">
+      <Accordion.Header>Item 2</Accordion.Header>
+      <Accordion.Panel>Item 2 content</Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="3">
+      <Accordion.Header>Item 3</Accordion.Header>
+      <Accordion.Panel>Item 3 content</Accordion.Panel>
     </Accordion.Item>
   </Accordion.Root>
   ```
